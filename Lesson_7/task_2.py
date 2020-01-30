@@ -3,3 +3,7 @@
 заданный случайными числами на промежутке [0; 50). Выведите на экран исходный
 и отсортированный массивы.
 """
+
+from random import uniform
+NUMBERS_LIST = [uniform(-100, 100) for i in range(10)]
+print(NUMBERS_LIST)
