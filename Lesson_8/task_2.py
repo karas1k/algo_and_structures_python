@@ -6,13 +6,14 @@
 
 import hashlib
 
-string = input('Введите строку, состоящую только из маленьких латинских букв')
+MY_STRING = input('Введите строку, состоящую из латинских букв: ')
+MY_STRING = MY_STRING.lower()
+# print(MY_STRING)
+SUMM = set()
 
-sum_substring = set()
+for i in range(len(MY_STRING)):
+    for j in range(len(MY_STRING), i, -1):
+        hash_string = hashlib.sha1(MY_STRING[i:j].encode('utf-8')).hexdigest()
+        SUMM.add(hash_string)
 
-for i in range(len(string)):
-    for j in range(len(string), i, -1):
-        hash_str = hashlib.sha1(string[i:j].encode('utf-8')).hexdigest()
-        sum_substring.add(hash_str)
-
-print(f'{len(sum_substring) -1} различных подстрок в строке {string}')
+print(f"В строке {MY_STRING} {len(SUMM) - 1} уникальных подстрок")
